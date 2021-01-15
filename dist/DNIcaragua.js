@@ -643,6 +643,15 @@ function GetAge(dateBirth,ProductionCode) {
     else if((date.getMonth()+1) == dateBirth.Month){
         age = (date.getDate() < dateBirth.Day)? age-1 : age ;
     }
+    // validacion meses dias
+        if(dateBirth.Month > 12 || dateBirth.Month < 1) return 0;
+        if(dateBirth.Day > 31 || dateBirth.Day < 1) return 0;
+        if(dateBirth.Month == 4 || dateBirth.Month == 6 || dateBirth.Month == 9 || dateBirth.Month == 11){
+            if(dateBirth.Day > 30) return 0;
+        }
+        if(dateBirth.Month == 2){
+            if(dateBirth.Day > 29) return 0;
+        }
     return age;
 }
 /**
